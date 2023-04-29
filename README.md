@@ -27,15 +27,74 @@ Compared to the previous YOLOv5 architecture, the YOLOv7 model has several featu
 
 4. Improved Object Detection: The YOLOv7 model has improved object detection capabilities, with better detection of small and occluded objects.
 
-The results in the YOLO v7 model:
+<h2>Results in YOLO v7 model:</h2>
 
 <img src="https://github.com/gSayak/cup-disc-YoloV7/blob/main/assets/results.png" style=""></img>
 
 <h2>VS</h2>
 
-The results in YOLO v5 model:
+<h2>Results in YOLO v5 model:<h2>
 <img src="https://github.com/gSayak/cup-disc-Segmentation/blob/main/assets/results.png" style=""></img>
 
 # Dataset
 
+This repo has been trained on the RIM-ONE dataset. RIM-ONE DL is a unified retinal image database for assessing glaucoma using Deep Learning. The full paper is available in this publication of the Image Analysis and Stereology journal: https://www.ias-iss.org/ojs/IAS/article/view/2346
+
+The directory structure followed is:
+
+```
+HOME/
+└── dataset-name/
+    ├── test/
+    │   ├── images/
+    │   │   ├── image-0.jpg
+    │   │   ├── image-1.jpg
+    │   │   └── ...
+    │   └── labels/
+    │       ├── image-0.txt
+    │       ├── image-1.txt
+    │       └── ...
+    ├── test/
+    │   ├── images/
+    │   │   └── ...
+    │   └── labels/
+    │       └── ...
+    ├── valid/
+    │   ├── images/
+    │   │   └── ...
+    │   └── labels/
+    │       └── ...
+    └── data.yaml
+    
+  ```
+ The repo was annotated manually using <a href="https://roboflow.com/">RoboFlow</a>
+
+Link for annotated dataset:  <a href="https://drive.google.com/drive/folders/1_ilde9qcASPgxcNs6jEDFtRrYH3vcB4M?usp=sharing">Here!</a>
+
+Annotation done by <a href="https://github.com/D0MINATRIX">Rajdeep Chatterjee</a>
+  
+# Steps to run segmentation on any Fundus image
+
+For running this repo on Google Colab you will need to   
+1. Clone the repo 
+2. Upload the <a href="https://github.com/gSayak/cup-disc-YoloV7/blob/main/prediction-YOLOv7.ipynb">prediction-YOLOv7.ipynb</a> in a google drive
+3. Open the prediction-YOLOv7.ipynb with Google Colab
+4. Once the file gets opened in Colab, upload the fundus image you want to mask in Google colab either by using the upload button or by simple drag and drop
+5. Copy the path of the fundus image that you uploaded and replace the `'path to/fundus.jpg'` with the path you copied in the earlier step or you can provide the URL of any image from the internet
+```bash
+!python segment/predict.py \
+--weights '/content/cup-disc-YoloV7/weights/best.pt' \
+--conf 0.25 \
+--source '/path to/fundus.jpg'
+```
+6. After changing the source, click `Runtime` in the toolbar and click on `Run all` or you can use `Ctrl+F9` to run the notebook and get the desired result. 
+7. The results will be stored in the `yolov7 -> runs -> predict-seg -> exp`
+8. To display the image change the path of the filename in the `display.Image` to the location where your result is stored as mentioned in `step 7`
+```bash
+for imageName in glob.glob('/content/yolov7/seg/runs/predict-seg/exp/*.jpg')[:2]:
+      display(Image(filename=imageName))
+      print("\n")
+```
+9. The segmented image with masks on cup and disc will be shown to you
+<img src="https://github.com/gSayak/cup-disc-YoloV7/blob/main/assets/fundus%20(1).jpg"></img>
 
