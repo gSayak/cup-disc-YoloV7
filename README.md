@@ -27,3 +27,15 @@ Compared to the previous YOLOv5 architecture, the YOLOv7 model has several featu
 
 4. Improved Object Detection: The YOLOv7 model has improved object detection capabilities, with better detection of small and occluded objects.
 
+The results in the YOLO v7 model:
+
+<img src="https://github.com/gSayak/cup-disc-YoloV7/blob/main/assets/results.png" style=""></img>
+
+<h2>VS</h2>
+
+The results in YOLO v5 model:
+<img src="https://github.com/gSayak/cup-disc-Segmentation/blob/main/assets/results.png" style=""></img>
+
+# Dataset
+
+
