@@ -1,6 +1,7 @@
 # Cup and Disc segmentation using YOLO v7 instance segmentation
 This repo uses YOLOv7 for segmentation of cup and disc from fundus image.
-<img src="https://github.com/gSayak/cup-disc-YoloV7/blob/main/assets/My%20project-1.jpg", style""><img>
+
+<img src= "https://github.com/gSayak/cup-disc-YoloV7/blob/main/assets/My%20project-1.jpg"</img>
 
 # What is Cup and Disc
 
